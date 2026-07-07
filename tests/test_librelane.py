@@ -6,8 +6,8 @@ def test_openlane(make_edalize_test):
     tool_options = {
         'clock_port': 'clk_i',
         'clock_period': 20,
-        'die_area': '[0,0,1000,1000]',
-        'core_area': '[100,100,900,900]',
+        'die_area': [0,0,1000.5,1000.2],
+        'core_area': [100,100,900.8,900.1],
         'pad_north': ["clk_i", "rst_ni", "gpio_i1"],
         'pad_south': ["gpio_i2", "gpio_i3", "gpio_i4"],
         'pad_east': ["gpio_i5", "gpio_i6", "gpio_i7"]

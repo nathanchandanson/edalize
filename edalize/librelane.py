@@ -39,19 +39,19 @@ class Librelane(Edatool):
                         },
                         {
                             "name": "clock_period",
-                            "type": "Float",
+                            "type": "String",
                             "desc": "The clock period in ns.",
                         },
                     ],
                     'lists' : [
                         {
                             "name": "core_area",
-                            "type": "Float",
+                            "type": "String",
                             "desc": "The core area as a list of 4 decimal numbers.",
                         },
                         {
                             "name": "die_area",
-                            "type": "Float",
+                            "type": "String",
                             "desc": "The die area as a list of 4 decimal numbers.",
                         },
                         {
