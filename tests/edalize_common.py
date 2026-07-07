@@ -239,6 +239,7 @@ FILES = [
     {"name": "qsf_constraint_file.qsf", "file_type": "QSF"},
     {"name": "pdc_floorplan_constraint_file.pdc", "file_type": "FPPDC"},
     {"name": "lpf_file.lpf", "file_type": "LPF"},
+    {"name": "additional_librelane_config_file.yaml", "file_type": "yamlConfig"},
 ]
 """Files of all supported file types."""
 

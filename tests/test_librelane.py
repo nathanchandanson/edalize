@@ -1,0 +1,23 @@
+from .edalize_common import make_edalize_test
+import os
+
+
+def test_openlane(make_edalize_test):
+    tool_options = {
+        'clock_port': 'clk_i',
+        'clock_period': 20,
+        'die_area': '[0,0,1000,1000]',
+        'core_area': '[100,100,900,900]',
+        'pad_north': ["clk_i", "rst_ni", "gpio_i1"],
+        'pad_south': ["gpio_i2", "gpio_i3", "gpio_i4"],
+        'pad_east': ["gpio_i5", "gpio_i6", "gpio_i7"]
+    }
+    paramtypes = ["vlogdefine"]
+
+    tf = make_edalize_test(
+        "librelane", tool_options=tool_options, param_types=paramtypes
+    )
+
+    tf.backend.configure()
+    tf.backend.build()
+    tf.compare_files(["librelane_config.yaml", "Makefile"])
