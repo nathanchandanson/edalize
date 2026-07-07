@@ -47,6 +47,8 @@ setup(
             "templates/genus/genus-makefile.j2",
             "templates/genus/genus-project.tcl.j2",
             "templates/genus/genus-read-sources.tcl.j2",
+            "templates/librelane/librelane-config.j2",
+            "templates/librelane/librelane-makefile.j2",
         ],
         "edalize.tools": [
             "templates/efinity/isf_to_xml.py",
