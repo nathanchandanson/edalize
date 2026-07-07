@@ -17,8 +17,64 @@ class Librelane(Edatool):
         if api_ver == 0:
             return {'description' : "Open source flow for ASIC synthesis, placement and routing",
                     'members': [
+                        {
+                            "name": "pdk",
+                            "type": "String",
+                            "desc": "The name of the PDK to use.",
+                        },
+                        {
+                            "name": "pdk_root",
+                            "type": "String",
+                            "desc": "The path to the folder containing the PDK.",
+                        },
+                        {
+                            "name": "clock_port",
+                            "type": "String",
+                            "desc": "The clock port name.",
+                        },
+                        {
+                            "name": "clock_net",
+                            "type": "String",
+                            "desc": "The clock net name.",
+                        },
+                        {
+                            "name": "clock_period",
+                            "type": "Float",
+                            "desc": "The clock period in ns.",
+                        },
                     ],
-                    'lists' : []}
+                    'lists' : [
+                        {
+                            "name": "core_area",
+                            "type": "Float",
+                            "desc": "The core area as a list of 4 decimal numbers.",
+                        },
+                        {
+                            "name": "die_area",
+                            "type": "Float",
+                            "desc": "The die area as a list of 4 decimal numbers.",
+                        },
+                        {
+                            "name": "pad_north",
+                            "type": "String",
+                            "desc": "The north pads as a list.",
+                        },
+                        {
+                            "name": "pad_south",
+                            "type": "String",
+                            "desc": "The south pads as a list.",
+                        },
+                        {
+                            "name": "pad_west",
+                            "type": "String",
+                            "desc": "The west pads as a list.",
+                        },
+                        {
+                            "name": "pad_east",
+                            "type": "String",
+                            "desc": "The east pads as a list.",
+                        },
+                    ]}
 
     def configure_main(self):
         pdk      = self.tool_options.get('pdk')
