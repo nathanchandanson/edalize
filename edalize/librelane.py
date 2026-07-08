@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 class Librelane(Edatool):
 
-    argtypes = []
+    argtypes = ["vlogdefine", "vlogparam"]
 
     @classmethod
     def get_doc(cls, api_ver):
