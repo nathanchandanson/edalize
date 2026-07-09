@@ -20,6 +20,10 @@ PDN_ENABLE_PINS: False
 # Enabled variables
 USE_SLANG: True
 
+# Additional variables
+PDN_CORE_RING_VWIDTH: 15
+PDN_CORE_RING_HWIDTH: 15
+
 # Verilog files
 VERILOG_FILES:
 - dir::sv_file.sv

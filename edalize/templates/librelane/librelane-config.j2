@@ -31,6 +31,13 @@ CLOCK_PERIOD: {{clock_period}}
 {% endfor %}
 {% endif %}
 
+{% if additional_variables %}
+# Additional variables
+{% for variable in additional_variables %}
+{{variable}}
+{% endfor %}
+{% endif %}
+
 # Verilog files
 VERILOG_FILES:
 {% for verilog_file in verilog_files %}

@@ -65,6 +65,11 @@ class Librelane(Edatool):
                             "desc": "The list of all the librelane config variables that will be set to True.",
                         },
                         {
+                            "name": "additional_variables",
+                            "type": "String",
+                            "desc": "The list of all the librelane config variables with their values. Ex.: 'PDN_CORE_RING_VWIDTH: 15'",
+                        },
+                        {
                             "name": "core_area",
                             "type": "String",
                             "desc": "The core area as a list of 4 decimal numbers.",
@@ -97,30 +102,31 @@ class Librelane(Edatool):
                     ]}
 
     def configure_main(self):
-        pdk               = self.tool_options.get('pdk')
-        pdk_root          = self.tool_options.get('pdk_root')
-        flow              = self.tool_options.get('flow')
-        remove_steps      = self.tool_options.get('remove_steps')
-        disable_variables = self.tool_options.get('disable_variables')
-        enable_variables  = self.tool_options.get('enable_variables')
+        pdk                     = self.tool_options.get('pdk')
+        pdk_root                = self.tool_options.get('pdk_root')
+        flow                    = self.tool_options.get('flow')
+        remove_steps            = self.tool_options.get('remove_steps')
+        disable_variables       = self.tool_options.get('disable_variables')
+        enable_variables        = self.tool_options.get('enable_variables')
+        additional_variables    = self.tool_options.get('additional_variables')
 
-        design_name          = self.toplevel
-        clock_port           = self.tool_options.get('clock_port')
-        clock_net            = self.tool_options.get('clock_net')
-        clock_period         = self.tool_options.get('clock_period')
+        design_name             = self.toplevel
+        clock_port              = self.tool_options.get('clock_port')
+        clock_net               = self.tool_options.get('clock_net')
+        clock_period            = self.tool_options.get('clock_period')
 
-        verilog_files        = []
-        verilog_include_dirs = []
-        verilog_defines      = self.vlogdefine
+        verilog_files           = []
+        verilog_include_dirs    = []
+        verilog_defines         = self.vlogdefine
 
-        core_area            = self.tool_options.get('core_area')
-        die_area             = self.tool_options.get('die_area')
-        pad_north            = self.tool_options.get('pad_north')
-        pad_south            = self.tool_options.get('pad_south')
-        pad_west             = self.tool_options.get('pad_west')
-        pad_east             = self.tool_options.get('pad_east')
+        core_area               = self.tool_options.get('core_area')
+        die_area                = self.tool_options.get('die_area')
+        pad_north               = self.tool_options.get('pad_north')
+        pad_south               = self.tool_options.get('pad_south')
+        pad_west                = self.tool_options.get('pad_west')
+        pad_east                = self.tool_options.get('pad_east')
 
-        additional_config    = []
+        additional_config_files = []
 
         (src_files, verilog_include_dirs) = self._get_fileset_files()
         for f in src_files:
@@ -129,32 +135,34 @@ class Librelane(Edatool):
                 # if f.file_type == 'systemVerilogSource':
                 #     use_system_verilog = True
             if f.file_type == 'yamlConfig':
-                additional_config.append(f.name)
+                additional_config_files.append(f.name)
 
         template_vars = {
-            'pdk'                  : pdk,
-            'pdk_root'             : pdk_root,
-            'flow'                 : flow,
-            'remove_steps'         : remove_steps,
-            'disable_variables'    : disable_variables,
-            'enable_variables'     : enable_variables,
-            'design_name'          : design_name,
-            'clock_port'           : clock_port,
-            'clock_net'            : clock_net,
-            'clock_period'         : clock_period,
+            'pdk'                     : pdk,
+            'pdk_root'                : pdk_root,
+            'flow'                    : flow,
+            'remove_steps'            : remove_steps,
+            'disable_variables'       : disable_variables,
+            'enable_variables'        : enable_variables,
+            'additional_variables'    : additional_variables,
 
-            'verilog_files'        : verilog_files,
-            'verilog_include_dirs' : verilog_include_dirs,
-            'verilog_defines'      : verilog_defines,
+            'design_name'             : design_name,
+            'clock_port'              : clock_port,
+            'clock_net'               : clock_net,
+            'clock_period'            : clock_period,
 
-            'core_area'            : core_area,
-            'die_area'             : die_area,
-            'pad_north'            : pad_north,
-            'pad_south'            : pad_south,
-            'pad_west'             : pad_west,
-            'pad_east'             : pad_east,
+            'verilog_files'           : verilog_files,
+            'verilog_include_dirs'    : verilog_include_dirs,
+            'verilog_defines'         : verilog_defines,
 
-            'additional_config'    : additional_config,
+            'core_area'               : core_area,
+            'die_area'                : die_area,
+            'pad_north'               : pad_north,
+            'pad_south'               : pad_south,
+            'pad_west'                : pad_west,
+            'pad_east'                : pad_east,
+
+            'additional_config_files' : additional_config_files,
         }
 
         # Check for mandatory arguments
