@@ -2,13 +2,23 @@
 
 meta:
   flow: Chip
-
-PRIMARY_GDSII_STREAMOUT_TOOL: klayout
+  substituting_steps:
+    Verilator.Lint: null
+    Checker.LintTimingConstructs: null
+    Checker.LintErrors: null
+    Checker.LintWarnings: null
 
 # Design and clock
 DESIGN_NAME: top_module
 CLOCK_PORT: clk_i
 CLOCK_PERIOD: 20
+
+# Disabled variables
+ERROR_ON_SYNTH_CHECKS: False
+PDN_ENABLE_PINS: False
+
+# Enabled variables
+USE_SLANG: True
 
 # Verilog files
 VERILOG_FILES:

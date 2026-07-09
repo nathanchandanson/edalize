@@ -28,6 +28,11 @@ class Librelane(Edatool):
                             "desc": "The path to the folder containing the PDK.",
                         },
                         {
+                            "name": "flow",
+                            "type": "String",
+                            "desc": "The librelane flow to use (Classic, Chip,...).",
+                        },
+                        {
                             "name": "clock_port",
                             "type": "String",
                             "desc": "The clock port name.",
@@ -44,6 +49,21 @@ class Librelane(Edatool):
                         },
                     ],
                     'lists' : [
+                        {
+                            "name": "remove_steps",
+                            "type": "String",
+                            "desc": "The list of all the steps to remove.",
+                        },
+                        {
+                            "name": "disable_variables",
+                            "type": "String",
+                            "desc": "The list of all the librelane config variables that will be set to False.",
+                        },
+                        {
+                            "name": "enable_variables",
+                            "type": "String",
+                            "desc": "The list of all the librelane config variables that will be set to True.",
+                        },
                         {
                             "name": "core_area",
                             "type": "String",
@@ -77,8 +97,12 @@ class Librelane(Edatool):
                     ]}
 
     def configure_main(self):
-        pdk      = self.tool_options.get('pdk')
-        pdk_root = self.tool_options.get('pdk_root')
+        pdk               = self.tool_options.get('pdk')
+        pdk_root          = self.tool_options.get('pdk_root')
+        flow              = self.tool_options.get('flow')
+        remove_steps      = self.tool_options.get('remove_steps')
+        disable_variables = self.tool_options.get('disable_variables')
+        enable_variables  = self.tool_options.get('enable_variables')
 
         design_name          = self.toplevel
         clock_port           = self.tool_options.get('clock_port')
@@ -110,6 +134,10 @@ class Librelane(Edatool):
         template_vars = {
             'pdk'                  : pdk,
             'pdk_root'             : pdk_root,
+            'flow'                 : flow,
+            'remove_steps'         : remove_steps,
+            'disable_variables'    : disable_variables,
+            'enable_variables'     : enable_variables,
             'design_name'          : design_name,
             'clock_port'           : clock_port,
             'clock_net'            : clock_net,

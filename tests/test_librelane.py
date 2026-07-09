@@ -4,6 +4,10 @@ import os
 
 def test_openlane(make_edalize_test):
     tool_options = {
+        'flow'      : 'Chip',
+        'remove_steps' : ['Verilator.Lint', 'Checker.LintTimingConstructs', 'Checker.LintErrors', 'Checker.LintWarnings'],
+        'disable_variables' : ['ERROR_ON_SYNTH_CHECKS', 'PDN_ENABLE_PINS'],
+        'enable_variables' : ['USE_SLANG'],
         'clock_port': 'clk_i',
         'clock_period': 20,
         'die_area': [0,0,1000.5,1000.2],
