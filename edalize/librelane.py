@@ -195,8 +195,10 @@ class Librelane(Edatool):
             logger.error("Please provide a clock_period.")
         if (template_vars['core_area'] == None):
             logger.error("Please provide a core_area.")
-        if (template_vars['die_area'] == None):
-            logger.error("Please provide a die_area.")
+        if (template_vars['die_area'] == None and template_vars['flow'] == "Chip"):
+            logger.error("Please provide a die_area for the Chip flow.")
+        if (template_vars['flow'] != "Chip" and template_vars['flow'] != "Classic"):
+            logger.error("flow must be either Chip or Classic.")
 
         # Generate the templates
         script_name = 'librelane_config.yaml'

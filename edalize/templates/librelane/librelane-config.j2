@@ -79,7 +79,9 @@ VERILOG_DEFINES:
 
 # Size
 FP_SIZING: absolute
+{% if die_area %}
 DIE_AREA: [{{die_area | join(', ')}}]
+{% endif %}
 CORE_AREA: [{{core_area | join(', ')}}]
 
 {% if pad_north or pad_south or pad_west or pad_east %}
