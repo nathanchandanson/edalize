@@ -24,6 +24,15 @@ USE_SLANG: True
 PDN_CORE_RING_VWIDTH: 15
 PDN_CORE_RING_HWIDTH: 15
 
+# PDN config file
+PDN_CFG: dir::pdn_cfg.tcl
+
+# Macro placement file
+MACRO_PLACEMENT_CFG: dir::macro_placement.cfg
+
+# Pin order
+IO_PIN_ORDER_CFG: dir::pin_order.cfg
+
 # Verilog files
 VERILOG_FILES:
 - dir::sv_file.sv

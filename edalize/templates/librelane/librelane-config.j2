@@ -38,6 +38,21 @@ CLOCK_PERIOD: {{clock_period}}
 {% endfor %}
 {% endif %}
 
+{% if tcl_pdn %}
+# PDN config file
+PDN_CFG: dir::{{tcl_pdn}}
+{% endif %}
+
+{% if macro_placement %}
+# Macro placement file
+MACRO_PLACEMENT_CFG: dir::{{macro_placement}}
+{% endif %}
+
+{% if pin_order %}
+# Pin order
+IO_PIN_ORDER_CFG: dir::{{pin_order}}
+{% endif %}
+
 # Verilog files
 VERILOG_FILES:
 {% for verilog_file in verilog_files %}

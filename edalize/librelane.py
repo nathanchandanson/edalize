@@ -126,7 +126,11 @@ class Librelane(Edatool):
         pad_west                = self.tool_options.get('pad_west')
         pad_east                = self.tool_options.get('pad_east')
 
+        # Additional files
         additional_config_files = []
+        tcl_pdn = ""
+        macro_placement = ""
+        pin_order = ""
 
         (src_files, verilog_include_dirs) = self._get_fileset_files()
         for f in src_files:
@@ -134,8 +138,14 @@ class Librelane(Edatool):
                 verilog_files.append(f.name)
                 # if f.file_type == 'systemVerilogSource':
                 #     use_system_verilog = True
-            if f.file_type == 'yamlConfig':
+            if f.file_type == 'librelaneConfig':
                 additional_config_files.append(f.name)
+            elif f.file_type == 'pdn':
+                tcl_pdn = f.name
+            elif f.file_type == 'macroPlacement':
+                macro_placement = f.name
+            elif f.file_type == 'pinOrder':
+                pin_order = f.name
 
         template_vars = {
             'pdk'                     : pdk,
@@ -163,6 +173,9 @@ class Librelane(Edatool):
             'pad_east'                : pad_east,
 
             'additional_config_files' : additional_config_files,
+            'tcl_pdn'                 : tcl_pdn,
+            'macro_placement'         : macro_placement,
+            'pin_order'               : pin_order,
         }
 
         # Check for mandatory arguments
