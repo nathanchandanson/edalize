@@ -243,6 +243,7 @@ FILES = [
     {"name": "pdn_cfg.tcl", "file_type": "pdn"},
     {"name": "macro_placement.cfg", "file_type": "macroPlacement"},
     {"name": "pin_order.cfg", "file_type": "pinOrder"},
+    {"name": "verilator_control.vlt", "file_type": "vlt"},
 ]
 """Files of all supported file types."""
 

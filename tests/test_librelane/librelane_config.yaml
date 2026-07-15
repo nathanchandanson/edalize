@@ -47,6 +47,10 @@ VERILOG_DEFINES:
 - vlogdefine_int=42
 - vlogdefine_str=hello
 
+# Verilator config files
+LINTER_VLT:
+- dir::verilator_control.vlt
+
 # Size
 FP_SIZING: absolute
 DIE_AREA: [0, 0, 1000.5, 1000.2]

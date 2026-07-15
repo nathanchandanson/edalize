@@ -77,6 +77,14 @@ VERILOG_DEFINES:
 {% endfor %}
 {% endif %}
 
+# Verilator config files
+{% if vlt_files %}
+LINTER_VLT:
+{% for vlt_file in vlt_files %}
+- dir::{{vlt_file}}
+{% endfor %}
+{% endif %}
+
 # Size
 FP_SIZING: absolute
 {% if die_area %}

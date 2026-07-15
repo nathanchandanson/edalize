@@ -127,6 +127,7 @@ class Librelane(Edatool):
         pad_east                = self.tool_options.get('pad_east')
 
         # Additional files
+        vlt_files = []
         additional_config_files = []
         tcl_pdn = ""
         macro_placement = ""
@@ -146,6 +147,8 @@ class Librelane(Edatool):
                 macro_placement = f.name
             elif f.file_type == 'pinOrder':
                 pin_order = f.name
+            elif f.file_type == 'vlt':
+                vlt_files.append(f.name)
 
         template_vars = {
             'pdk'                     : pdk,
@@ -172,6 +175,7 @@ class Librelane(Edatool):
             'pad_west'                : pad_west,
             'pad_east'                : pad_east,
 
+            'vlt_files'               : vlt_files,
             'additional_config_files' : additional_config_files,
             'tcl_pdn'                 : tcl_pdn,
             'macro_placement'         : macro_placement,
