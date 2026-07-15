@@ -77,8 +77,8 @@ VERILOG_DEFINES:
 {% endfor %}
 {% endif %}
 
-# Verilator config files
 {% if vlt_files %}
+# Verilator config files
 LINTER_VLT:
 {% for vlt_file in vlt_files %}
 - dir::{{vlt_file}}
@@ -87,10 +87,10 @@ LINTER_VLT:
 
 # Size
 FP_SIZING: absolute
-{% if die_area %}
 DIE_AREA: [{{die_area | join(', ')}}]
-{% endif %}
+{% if core_area %}
 CORE_AREA: [{{core_area | join(', ')}}]
+{% endif %}
 
 {% if pad_north or pad_south or pad_west or pad_east %}
 # Pads
