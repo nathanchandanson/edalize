@@ -189,18 +189,16 @@ class Librelane(Edatool):
         if (template_vars['pdk_root'] == None):
             template_vars['pdk_root'] = '~/.ciel'
             logger.warning("No PDK_ROOT specified, using default (~/.ciel).")
-        if (template_vars['pdk'] == None):
-            pdk = pdk if (pdk != None) else 'ihp-sg13g2'
         if (template_vars['design_name'] == None):
             logger.error("Please provide a toplevel.")
         if (template_vars['clock_port'] == None):
-            logger.error("Please provide a clock_port.")
+            logger.warning("No clock_port provided.")
         if (template_vars['clock_period'] == None):
-            logger.error("Please provide a clock_period.")
+            logger.warning("No clock_period provided.")
         if (template_vars['die_area'] == None):
-            logger.error("Please provide a die_area.")
-        if (template_vars['core_area'] == None and template_vars['flow'] == "Chip"):
-            logger.error("Please provide a core_area for the Chip flow.")
+            logger.warning("No die_area provided.")
+        if (template_vars['core_area'] == None):
+            logger.warning("No core_area provided.")
         if (template_vars['flow'] != "Chip" and template_vars['flow'] != "Classic"):
             logger.error("flow must be either Chip or Classic.")
 
