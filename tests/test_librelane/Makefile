@@ -16,3 +16,7 @@ librelane: $(PDK_ROOT)/$(PDK)
 .PHONY: librelane-retry
 librelane-retry: $(PDK_ROOT)/$(PDK)
 	$(EDALIZE_LAUNCHER) librelane librelane_config.yaml additional_librelane_config_file.yaml --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --design-dir $(MKFILE_DIR) --last-run --from ${LAST_STEP_NAME}
+
+.PHONY: librelane-step
+librelane-step: $(PDK_ROOT)/$(PDK)
+	$(EDALIZE_LAUNCHER) librelane librelane_config.yaml additional_librelane_config_file.yaml --pdk ${PDK} --pdk-root ${PDK_ROOT} --manual-pdk --design-dir $(MKFILE_DIR) --last-run --from ${STEP}
