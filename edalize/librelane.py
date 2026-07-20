@@ -132,6 +132,9 @@ class Librelane(Edatool):
         tcl_pdn = ""
         macro_placement = ""
         pin_order = ""
+        fallback_sdc = ""
+        pnr_sdc = ""
+        signoff_sdc = ""
 
         (src_files, verilog_include_dirs) = self._get_fileset_files()
         for f in src_files:
@@ -149,6 +152,16 @@ class Librelane(Edatool):
                 pin_order = f.name
             elif f.file_type == 'vlt':
                 vlt_files.append(f.name)
+            elif f.file_type == 'SDC':
+                if 'fallback' in f.name.rsplit('.', 1)[0]:
+                    fallback_sdc = f.name
+                if 'pnr' in f.name.rsplit('.', 1)[0]:
+                    pnr_sdc = f.name
+                if 'signoff' in f.name.rsplit('.', 1)[0]:
+                    signoff_sdc = f.name
+                if ('fallback' not in f.name.rsplit('.', 1)[0]) and ('pnr' not in f.name.rsplit('.', 1)[0]) and ('signoff' not in f.name.rsplit('.', 1)[0]):
+                    logger.warning("Could not identify .sdc file. File must contain in 'fallback', 'pnr' or 'signoff' or a combination of them.")
+
 
         template_vars = {
             'pdk'                     : pdk,
@@ -180,6 +193,9 @@ class Librelane(Edatool):
             'tcl_pdn'                 : tcl_pdn,
             'macro_placement'         : macro_placement,
             'pin_order'               : pin_order,
+            'fallback_sdc'            : fallback_sdc,
+            'pnr_sdc'                 : pnr_sdc,
+            'signoff_sdc'             : signoff_sdc,
         }
 
         # Check for mandatory arguments

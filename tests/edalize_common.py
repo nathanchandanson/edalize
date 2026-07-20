@@ -244,6 +244,8 @@ FILES = [
     {"name": "macro_placement.cfg", "file_type": "macroPlacement"},
     {"name": "pin_order.cfg", "file_type": "pinOrder"},
     {"name": "verilator_control.vlt", "file_type": "vlt"},
+    {"name": "signoff.sdc", "file_type": "SDC"},
+    {"name": "pnr.sdc", "file_type": "SDC"},
 ]
 """Files of all supported file types."""
 

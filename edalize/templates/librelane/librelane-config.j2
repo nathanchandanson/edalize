@@ -53,6 +53,19 @@ MACRO_PLACEMENT_CFG: dir::{{macro_placement}}
 IO_PIN_ORDER_CFG: dir::{{pin_order}}
 {% endif %}
 
+{% if fallback_sdc or pnr_sdc or signoff_sdc %}
+# SDC files
+{% if fallback_sdc %}
+FALLBACK_SDC: dir::{{fallback_sdc}}
+{% endif %}
+{% if pnr_sdc %}
+PNR_SDC_FILE: dir::{{pnr_sdc}}
+{% endif %}
+{% if pnr_sdc %}
+SIGNOFF_SDC_FILE: dir::{{signoff_sdc}}
+{% endif %}
+{% endif %}
+
 # Verilog files
 VERILOG_FILES:
 {% for verilog_file in verilog_files %}
