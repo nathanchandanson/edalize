@@ -52,7 +52,7 @@ VERILOG_DEFINES:
 - vlogdefine_str=hello
 
 # Verilator config files
-LINTER_VLT:
+LINTER_VLTS:
 - dir::verilator_control.vlt
 
 # Size

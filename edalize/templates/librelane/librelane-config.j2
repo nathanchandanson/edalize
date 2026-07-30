@@ -61,7 +61,7 @@ FALLBACK_SDC: dir::{{fallback_sdc}}
 {% if pnr_sdc %}
 PNR_SDC_FILE: dir::{{pnr_sdc}}
 {% endif %}
-{% if pnr_sdc %}
+{% if signoff_sdc %}
 SIGNOFF_SDC_FILE: dir::{{signoff_sdc}}
 {% endif %}
 {% endif %}
@@ -92,7 +92,7 @@ VERILOG_DEFINES:
 
 {% if vlt_files %}
 # Verilator config files
-LINTER_VLT:
+LINTER_VLTS:
 {% for vlt_file in vlt_files %}
 - dir::{{vlt_file}}
 {% endfor %}

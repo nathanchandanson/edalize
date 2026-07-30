@@ -2,7 +2,7 @@ from .edalize_common import make_edalize_test
 import os
 
 
-def test_openlane(make_edalize_test):
+def test_librelane(make_edalize_test):
     tool_options = {
         'flow'      : 'Chip',
         'remove_steps' : ['Verilator.Lint', 'Checker.LintTimingConstructs', 'Checker.LintErrors', 'Checker.LintWarnings'],
